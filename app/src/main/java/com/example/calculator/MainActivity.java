@@ -19,11 +19,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener
     Button Add;
     Button Sub;
     Button Mul;
-    Button Hel;
+
     float result = 0;
     Button Div;
     TextView Result;
-
+    TextView History;
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
@@ -35,17 +35,17 @@ public class MainActivity extends AppCompatActivity implements OnClickListener
         Add = (Button) findViewById(R.id.Add);
         Sub = (Button) findViewById(R.id.Sub);
         Mul = (Button) findViewById(R.id.Mul);
-        Hel = (Button) findViewById(R.id.hello);
+        History =(TextView) findViewById(R.id.History);
         Div = (Button) findViewById(R.id.Div);
-        Result = (TextView) findViewById(R.id.textView);
+        Result = (TextView) findViewById(R.id.Result);
 
 // set a listener
         Add.setOnClickListener(this);
         Sub.setOnClickListener(this);
         Mul.setOnClickListener(this);
         Div.setOnClickListener(this);
-        Hel.setOnClickListener(this);
         Result.setOnClickListener(this);
+        History.setOnClickListener(this);
     }
 
 
@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener
         float num2 = 0;
 
         String oper = " ";
+        String his = History.getText()+"\n";
 // check if the fields are empty
         if (TextUtils.isEmpty(Num1.getText().toString()) || TextUtils.isEmpty(Num2.getText().toString()))
             return;
@@ -83,29 +84,32 @@ public class MainActivity extends AppCompatActivity implements OnClickListener
                 oper = "/";
                 result = num1 / num2;
                 break;
-            case R.id.hello:
-                oper="Hello world";
-                break;
-            case R.id.textView:
-                if(Result.getText()=="Hello world")
+            case R.id.Result:
+                if(Result.getText()!="Answer is")
                 {
-
-                }
-                else{
                     Num1.setText(result+"");
+                    Num2.setText("");
                 }
+                oper="";
+                break;
+            case R.id.History:
+                if(History.getText()!="History")
+                {
+                    History.setText("History\n");
+                }
+                oper="";
                 break;
             default:
                 break;
         }
 // form the output line
-        if(oper!="Hello world") {
+            if(oper!="")
+            {
+                his=his+num1+oper+num2+"="+result+",";
+                History.setText(his+"");
+            }
             Result.setText(num1 + " " + oper + " " + num2 + " = " + result);
 
-        }
-        else{
-            Result.setText("Hello world");
-        }
     }
 
 

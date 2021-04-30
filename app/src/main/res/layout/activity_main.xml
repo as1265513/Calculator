@@ -2,6 +2,7 @@
 
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -60,20 +61,32 @@
             android:text="/"
             android:textSize="30sp"/>
 
-        <Button
-            android:id="@+id/hello"
+    </LinearLayout>
+
+// applying grid layout text view
+    <androidx.gridlayout.widget.GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/Result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="H"
-            android:textSize="30sp"/>
-    </LinearLayout>
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Answer is"
-        android:textSize="30sp"
-        android:gravity="center"/>
+            android:layout_marginTop="50dp"
+            android:text="Answer is"
+            android:textSize="30sp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/History"
+            android:layout_width="match_parent"
+            android:layout_height="356dp"
+            android:layout_marginTop="50dp"
+            android:gravity="top"
+            android:text="History"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textSize="24sp"
+            app:layout_column="0"
+            app:layout_row="1" />
+
+    </androidx.gridlayout.widget.GridLayout>
 </LinearLayout>
